@@ -114,7 +114,7 @@
 (defun parse-extra-data (data)
   (loop for (name idx) on *response-parts-name-mapping* by #'cddr
         collect name
-        collect (when (< idx (length data)) (svref data idx))))
+        collect (when (< idx (length data)) (nth idx data))))
 
 ;; PUBLIC
 (defun translate (text &key (target "en") (source "auto") dex-args)
@@ -126,11 +126,11 @@
                               :headers `(("User-Agent" . ,*user-agent*))
                               :keep-alive nil
                               dex-args))
-             (response-arr (com.inuoe.jzon:parse response)))
+             (data (jojo:parse response)))
         (values
          (reduce #'(lambda (carry item) (if (typep item 'string)
                                             (uiop:strcat carry item)
                                             carry))
-                 (svref response-arr 0)
-                 :key #'(lambda (a) (svref a 0)))
-         (parse-extra-data response-arr)))))
+                 (car data)
+                 :key #'(lambda (a) (car a)))
+         (parse-extra-data data)))))
