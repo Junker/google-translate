@@ -49,7 +49,7 @@ This system can be installed from [UltraLisp](https://ultralisp.org/) like this:
                             :dex-args '(:keep-alive nil
                                         :connect-timeout 5
                                         :verbose t
-                                        :proxy "https://example.org:8080"))
+                                        :proxy "http://user:pass@example.org:8080"))
 ```
 
 `dex-args` - dexador [request arguments](https://github.com/fukamachi/dexador#functions)
