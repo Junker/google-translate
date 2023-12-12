@@ -48,8 +48,18 @@ This system can be installed from [UltraLisp](https://ultralisp.org/) like this:
                             :source "en"
                             :dex-args '(:keep-alive nil
                                         :connect-timeout 5
-                                        :verbose t
-                                        :proxy "http://user:pass@example.org:8080"))
+                                        :verbose t))
 ```
 
 `dex-args` - dexador [request arguments](https://github.com/fukamachi/dexador#functions)
+
+
+
+## Disclaimer
+
+This is an unofficial system developed for educational purposes only, using the web API of translate.google.com and also is not associated with Google.
+
+- The maximum character limit on a single text is 15k.
+- Due to limitations of the web version of google translate, this API does not guarantee that the library would work properly at all times (so please use this system if you don’t care about stability).
+- Important: If you want to use a stable API, I highly recommend you to use [Google’s official translate API](https://cloud.google.com/translate/docs).
+- If you get HTTP 5xx error or errors like #6, it’s probably because Google has banned your client IP address.
